@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pavitra Qur'an App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Redirecting you to the Hisnul Muslim app..." />
+  <meta name="robots" content="noindex, nofollow"> 
+
+  <script>
+    window.onload = function () {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(userAgent)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.hmkannada.hisnulmuslim&pli=1";
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/us/app/hisnul-muslim-dua-dhikr/id1544699159";
+      } else {
+        window.location.href = "https://www.pavitra-quraan.com/";
+      }
+    };
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the Hisnul Muslim app.....</p>
+</body>
+</html>
