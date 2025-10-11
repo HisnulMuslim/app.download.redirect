@@ -13,8 +13,8 @@
       const platform = navigator.platform || '';
       const maxTouchPoints = navigator.maxTouchPoints || 0;
 
-      console.log("userAgent:", userAgent);
-      console.log("platform:", platform);
+      alert("userAgent:", userAgent);
+      alert("platform:", platform);
 
       // Better iOS detection
       const isIOS = /iPad|iPhone|iPod/.test(userAgent) ||
