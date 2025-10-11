@@ -14,21 +14,43 @@
       const maxTouchPoints = navigator.maxTouchPoints || 0;
       const uaData = navigator.userAgentData || {};
 
-      // --- Reliable iOS detection (even for spoofed UAs) ---
-      const isIOS =
-        /iPad|iPhone|iPod/.test(ua) ||                    // Normal case
-        (platform === 'MacIntel' && maxTouchPoints > 1) || // Chrome/Safari iOS
-        (/CriOS/i.test(ua)) ||                            // Chrome on iOS
-        (/FxiOS/i.test(ua)) ||                            // Firefox on iOS
-        (/Version\/.*Safari/i.test(ua) && /Mobile/i.test(ua)); // Safari Mobile fallback
-
       // --- Better Android detection ---
       const isAndroid =
         /android/i.test(ua) ||
         (uaData.platform === 'Android') ||
         (/Linux/i.test(platform) && /Mobile/i.test(ua));
 
-      alert("isAndroid-->"+isAndroid+" , isIOS-->"+isIOS+" ,userAgent:"+ua+" ,platform:"+ platform+" , maxTouchPoints:", maxTouchPoints+",uaData:", uaData);
+      // --- Robust iOS detection ---
+      const isIOS = (() => {
+        // Case 1: Normal iPhone/iPad
+        if (/iPad|iPhone|iPod/.test(ua)) return true;
+
+        // Case 2: Chrome/Safari on iOS using MacIntel trick
+        if (platform === 'MacIntel' && maxTouchPoints > 1) return true;
+
+        // Case 3: Spoofed "Linux armv8" on iOS (no Android, has touch + small screen)
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = Math.max(screen.width, screen.height) < 900;
+        if (
+          /Linux/i.test(platform) &&
+          !/Android/i.test(ua) &&
+          isTouchDevice &&
+          isSmallScreen
+        ) return true;
+
+        // Case 4: Chrome or Firefox for iOS tokens
+        if (/CriOS|FxiOS/i.test(ua)) return true;
+
+        return false;
+      })();
+
+      alert(
+        "isAndroid ----> " + isAndroid +
+        "\nisIOS --> " + isIOS +
+        "\nuserAgent: " + ua +
+        "\nplatform: " + platform +
+        "\nmaxTouchPoints: " + maxTouchPoints
+      );
 
       // --- Redirects ---
       if (isAndroid) {
