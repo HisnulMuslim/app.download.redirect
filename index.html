@@ -34,11 +34,17 @@
 
       // --- Redirects ---
       if (isAndroid) {
-        // Open Play Store app directly
+        // Try to open Play Store app, fallback to browser if unavailable
         window.location.replace("market://search?q=pub:Muslim+Akhi");
+        setTimeout(function() {
+          window.location.replace("https://play.google.com/store/apps/developer?id=Muslim+Akhi&hl=en");
+        }, 1500);
       } else if (isIOS) {
-        // Open App Store app directly
+        // Try to open App Store app, fallback to browser if unavailable
         window.location.replace("itms-apps://apps.apple.com/us/app/hisnul-muslim-dua-dhikr/id1544699159");
+        setTimeout(function() {
+          window.location.replace("https://apps.apple.com/us/app/hisnul-muslim-dua-dhikr/id1544699159");
+        }, 1500);
       } else {
         window.location.replace("https://www.hisnulmuslimdua.com/");
       }
