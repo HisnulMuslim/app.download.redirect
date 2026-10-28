@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Download Quran & Hisnul Muslim App</title>
+  <title>Kannada Quran (ಕನ್ನಡ ಕುರ್ ಆನ್) & Hisnul Muslim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Redirecting..." />
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Download the official Kannada Quran & Hisnul Muslim apps for iOS and Android." />
   <meta http-equiv="refresh" content="3;url=https://www.hisnulmuslimdua.com/">
+
+  <!-- Open Graph / WhatsApp / Facebook Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quran.hisnulmuslimdua.com/" />
+  <meta property="og:title" content="Kannada Quran (ಕನ್ನಡ ಕುರ್ ಆನ್) & Hisnul Muslim" />
+  <meta property="og:description" content="Download the official Kannada Quran & Hisnul Muslim apps for iOS and Android." />
+  <meta property="og:image" content="https://quran.hisnulmuslimdua.com/preview.png" />
+  <meta property="og:image:secure_url" content="https://quran.hisnulmuslimdua.com/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X Preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kannada Quran (ಕನ್ನಡ ಕುರ್ ಆನ್) & Hisnul Muslim" />
+  <meta name="twitter:description" content="Download the official Kannada Quran & Hisnul Muslim apps for iOS and Android." />
+  <meta name="twitter:image" content="https://quran.hisnulmuslimdua.com/preview.png" />
 
   <style>
     body {
@@ -22,18 +39,21 @@
       justify-content: center;
       align-items: center;
     }
+
     .container {
       background: white;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
       max-width: 400px;
     }
+
     h1 {
       margin: 0 0 20px 0;
       font-size: 24px;
       color: #667eea;
     }
+
     .spinner {
       width: 50px;
       height: 50px;
@@ -43,19 +63,28 @@
       animation: spin 1s linear infinite;
       margin: 20px auto;
     }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
+
     p {
       margin: 10px 0;
       color: #666;
     }
+
     a {
       color: #667eea;
       text-decoration: none;
       font-weight: 600;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -102,8 +131,8 @@
         const fallbackLink = document.getElementById('fallback-link');
         if (fallbackLink) {
           fallbackLink.href = isAndroid ? URLS.android.browser :
-                              isIOS ? URLS.ios.browser :
-                              URLS.default;
+            isIOS ? URLS.ios.browser :
+              URLS.default;
         }
 
         // --- Redirects ---
@@ -111,7 +140,7 @@
         let fallbackTimer = null;
 
         // Detect if store app opened (user left the page)
-        document.addEventListener('visibilitychange', function() {
+        document.addEventListener('visibilitychange', function () {
           if (document.hidden) {
             clearTimeout(fallbackTimer);
             redirected = true;
@@ -119,7 +148,7 @@
         });
 
         // Backup detection using window blur
-        window.addEventListener('blur', function() {
+        window.addEventListener('blur', function () {
           clearTimeout(fallbackTimer);
           redirected = true;
         });
@@ -127,7 +156,7 @@
         if (isAndroid) {
           // Try to open Play Store app, fallback to browser if unavailable
           window.location.replace(URLS.android.store);
-          fallbackTimer = setTimeout(function() {
+          fallbackTimer = setTimeout(function () {
             if (!redirected) {
               redirected = true;
               window.location.replace(URLS.android.browser);
@@ -136,7 +165,7 @@
         } else if (isIOS) {
           // Try to open App Store app, fallback to browser if unavailable
           window.location.replace(URLS.ios.store);
-          fallbackTimer = setTimeout(function() {
+          fallbackTimer = setTimeout(function () {
             if (!redirected) {
               redirected = true;
               window.location.replace(URLS.ios.browser);
@@ -153,12 +182,15 @@
     };
   </script>
 </head>
+
 <body>
   <div class="container">
     <h1>Download Quran & Hisnul Muslim App</h1>
     <div class="spinner"></div>
     <p>Redirecting to store...</p>
-    <p>If you are not redirected automatically, <a href="https://www.hisnulmuslimdua.com/" id="fallback-link">click here</a>.</p>
+    <p>If you are not redirected automatically, <a href="https://www.hisnulmuslimdua.com/" id="fallback-link">click
+        here</a>.</p>
   </div>
 </body>
+
 </html>
